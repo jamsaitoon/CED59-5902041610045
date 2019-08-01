@@ -3,7 +3,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def member():
-    return render_template("form.html")
+    return render_template('Register.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
