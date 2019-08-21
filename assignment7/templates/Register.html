@@ -2,73 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Regis</title>
-    <script language ="JavaScript">
-        function checkform()
-            {
-                FirstName = document.formregister.txt_fname.value;
-                if(FirstName.length == "")
-                {
-                    alert("กรอกชื่อ");
-                    return false;
-                }
-                LastName = document.formregister.txt_lname.value;
-                if(LastName.length == "")
-                {
-                    alert("กรอกนามสกุล");
-                    return false;
-                }
-                Email = document.formregister.txt_email.value;
-                if(Email.length == "")
-                {
-                    alert("กรอก E-mail");
-                    return false;
-                }
-                var user = "pornchita";
-                UserName = document.formregister.txt_user.value;
-                if(UserName.length == "")
-                {
-                    alert("กรอก Username");
-                    return false;
-                }
-                if(UserName.length == user.length)
-                {
-                    alert("This have username in database.");
-                    return false;
-                }
-                PassWord = document.formregister.txt_pwd.value;
-                if(PassWord.length < 8)
-                {
-                    alert("กรองรหัสผ่านอย่างน้อย 8 ตัว.");
-                    return false;
-                }
-            }
-    </script>
-
-
-
 </head>
-<body>
- <form name="formregister" method="post" action="/" onsubmit="return checkform()">
-     REGISTER <br/>
-                NAME :
-                 <input type="text" name="txt_fname" ><br/>
+<body style="color: blue" bgcolor="green" >
+<center>
 
-                LASTNAME :
-                <input type="text" name="txt_lname" ><br/>
+   <h1>OK Register</h1>
 
-                E-MAIL :
-                <input type="text" name="txt_email" size="30"><br/>
+    <form method="post" action="{{ url_for('register') }}">
+        {{ form.csrf_token }}
+        <p>Firstname : {{ form.Fname }} </p>
+        <p>Lastname : {{ form.Lname }} </p>
+        <p>E-mail : {{ form.mail }}</p>
+        {% for error in form.mail.errors %}
+            <li style="color:red">{{ error }}</li>
+        {% endfor %}
+        <p>Username :  {{ form.Uname }} </p>
+        <p>Password :{{ form.Pass }} </p>
+        {% for error in form.Pass.errors %}
+            <li style="color:red">{{ error }}</li>
+        {% endfor %}
 
-                USERNAME :
-                <input type="text" name="txt_user" ><br/>
 
-                PASSWORD :
-                 <input type="password" name="txt_pwd" ><br/>
-
-                <input type="submit"  name="btn_SigeUp" value="Sign Up">
-
-
+        <input type="submit" value="REGISTER"/>
     </form>
+
+</center>
 </body>
 </html>
