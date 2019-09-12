@@ -1,2 +1,1 @@
-<b> Test </b>
-<?=$data?>
+<b>Test Action</b>

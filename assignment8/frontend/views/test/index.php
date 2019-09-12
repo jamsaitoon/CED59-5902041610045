@@ -1,2 +1,2 @@
-<b> Index </b>
-<?=$data?>
+<b>Index Action</b>
+<?php echo $data ?>
